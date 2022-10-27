@@ -17,7 +17,7 @@ button = types.KeyboardButton("Enter Symptoms")
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button)
 
 
-@bot.message_handler(commands=["Start"])
+@bot.message_handler(commands=["start"])
 def greet(message):
     bot.reply_to(message, "Hello, my name is DisDetbot, and I can diagnose illnesses based on the information "
                           "provided about symptoms.")
