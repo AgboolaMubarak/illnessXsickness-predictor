@@ -4,6 +4,8 @@ from flask import Flask, request, make_response
 import json
 from flask_cors import cross_origin
 import os
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
 import random
 
 import telebot
@@ -17,8 +19,6 @@ button = types.KeyboardButton("Enter Symptoms")
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(button)
 
 
-
-@app.route('/')
 @bot.message_handler(commands=["start"])
 def greet(message):
     bot.reply_to(message, "Hello, my name is DisDetbot, and I can diagnose illnesses based on the information "
@@ -71,10 +71,8 @@ def Set_Symptom5(message):
                                           " please try again with an underscore between compound words.")
         raise
 
-
-bot.polling()
 # app = Flask(__name__)
-
+bot.polling()
 
 # @app.route('/')
 # def index():
