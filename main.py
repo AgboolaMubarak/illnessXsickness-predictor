@@ -72,7 +72,8 @@ def Set_Symptom5(message):
         raise
 
 # app = Flask(__name__)
-bot.polling()
+if __name__ == '__main__':
+    bot.polling()
 
 # @app.route('/')
 # def index():
