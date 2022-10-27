@@ -1,0 +1,13 @@
+.git
+.idea
+illness_Detector_Telegram_Bot
+main.py
+modelling.py
+problem.txt
+problem1.txt
+problem3.txt
+problem4.txt
+problem5.txt
+requirements.txt
+Symptom-severity.csv
+svc.pkl
