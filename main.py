@@ -74,7 +74,7 @@ def Set_Symptom5(message):
         raise
 
 
-bot.infinity_polling()
+bot.polling()
 # app = Flask(__name__)
 
 # @app.route('/')
