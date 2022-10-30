@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from flask import Flask, request, make_response
+from flask_restful import Api, Resource
+
 import json
 from flask_cors import cross_origin
 import os
@@ -71,12 +73,11 @@ def Set_Symptom5(message):
                                           " please try again with an underscore between compound words.")
         raise
 
+
+bot.infinity_polling()
 # app = Flask(__name__)
-if __name__ == '__main__':
-    bot.polling()
 
 # @app.route('/')
 # def index():
 #     return "<h1>Welcome!</h1>"
 #
-
