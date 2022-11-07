@@ -6,8 +6,7 @@ from modelling import *
 
 telegram_bot_token = "5680510057:AAEpB_SAi6qFXpaW6D88uoIVq_pBoR3quz4"
 
-updater = Updater(token=telegram_bot_token, use_context=True)
-dispatcher = updater.dispatcher
+
 
 
 def start(update, context):
@@ -154,15 +153,24 @@ conv_handler = ConversationHandler(
 
     fallbacks=[CommandHandler('cancel', cancel)]
 )
-dispatcher.add_handler(conv_handler)
 
-updater.start_webhook(listen="0.0.0.0",
-                      port=int(os.environ.get('PORT', 5000)),
-                      url_path=telegram_bot_token,
-                      webhook_url="https://illness-detector-bot.herokuapp.com/" + telegram_bot_token
-                      )
-updater.bot.setWebhook('https://illness-detector-bot.herokuapp.com/' + telegram_bot_token)
+def main():
+    updater = Updater(token=telegram_bot_token, use_context=True)
+    dispatcher = updater.dispatcher
 
-updater.idle()
+    dispatcher.add_handler(conv_handler)
+
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(os.environ.get('PORT', 5000)),
+                          url_path=telegram_bot_token,
+                          webhook_url="https://illness-detector-bot.herokuapp.com/" + telegram_bot_token
+                          )
+    updater.bot.setWebhook('https://illness-detector-bot.herokuapp.com/' + telegram_bot_token)
+
+    updater.idle()
+
+
+if __name__ == "__main__":
+    main()
 # updater.start_polling()
 
