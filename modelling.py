@@ -1,6 +1,8 @@
 import pickle
 import pandas as pd
 import numpy as np
+import re
+
 
 model = pickle.load(open('svc.pkl', 'rb'))
 
@@ -24,4 +26,6 @@ def SVM():
     nulls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     psy = [arr + nulls]
     pred = model.predict(psy)
-    return pred
+    val = str(pred)
+    res = re.sub(r'[^\w\s]', '', val)
+    return res
