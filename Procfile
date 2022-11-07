@@ -1,11 +1,3 @@
 web: python modelling.py $PORT
-web: python problem.txt $PORT
-web: python problem1.txt $PORT
-web: python problem3.txt $PORT
-web: python problem4.txt $PORT
-web: python problem5.txt $PORT
 web: python main.py $PORT
-web: python trip.txt $PORT
-web: python trip2.txt $PORT
-web: python trip3.txt $PORT
-web: python trip4.txt $PORT
+
