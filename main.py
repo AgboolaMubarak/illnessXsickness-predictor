@@ -158,7 +158,6 @@ conv_handler = ConversationHandler(
 )
 dispatcher.add_handler(conv_handler)
 
-# updater.start_polling()
 
 updater.start_webhook(listen="0.0.0.0",
                       port=int(os.environ.get('PORT', 5000)),
