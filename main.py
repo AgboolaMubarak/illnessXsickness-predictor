@@ -167,4 +167,3 @@ updater.start_webhook(listen="0.0.0.0",
                       url_path=telegram_bot_token,
                       webhook_url="https://dashboard.heroku.com/apps/illness-detector-bot/" + telegram_bot_token
                       )
-updater.idle()
