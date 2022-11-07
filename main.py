@@ -102,7 +102,7 @@ def SetSymptom5(update, context):
         result = re.sub(r"\s+", '_', txt[0])
         open('problem5.txt', 'w').write(result.lower())
     else:
-        open('problem4.txt', 'w').write(update.message.text.lower())
+        open('problem5.txt', 'w').write(update.message.text.lower())
 
     try:
 
@@ -164,4 +164,5 @@ updater.start_webhook(listen="0.0.0.0",
 updater.bot.setWebhook('https://illness-detector-bot.herokuapp.com/' + telegram_bot_token)
 
 updater.idle()
+# updater.start_polling()
 
