@@ -95,15 +95,14 @@ def SetSymptom4(update, context):
 
 def SetSymptom5(update, context):
     chat_id = update.effective_chat.id
-    open('trip3.txt', 'w').write(update.message.text)
-    with open('trip3.txt') as f:
+    open('trip5.txt', 'w').write(update.message.text)
+    with open('trip5.txt') as f:
         txt = f.readlines()
     if " " in txt[0]:
         result = re.sub(r"\s+", '_', txt[0])
         open('problem5.txt', 'w').write(result.lower())
     else:
         open('problem4.txt', 'w').write(update.message.text.lower())
-        context.bot.send_message(chat_id=chat_id, text="Enter symptom 5")
 
     try:
 
@@ -157,12 +156,13 @@ conv_handler = ConversationHandler(
 )
 dispatcher.add_handler(conv_handler)
 
-updater.start_webhook(listen="0.0.0.0",
-                      port=int(os.environ.get('PORT', 5000)),
-                      url_path=telegram_bot_token,
-                      webhook_url="https://illness-detector-bot.herokuapp.com/" + telegram_bot_token
-                      )
-updater.bot.setWebhook('https://illness-detector-bot.herokuapp.com/' + telegram_bot_token)
-
-updater.idle()
+# updater.start_webhook(listen="0.0.0.0",
+#                       port=int(os.environ.get('PORT', 5000)),
+#                       url_path=telegram_bot_token,
+#                       webhook_url="https://illness-detector-bot.herokuapp.com/" + telegram_bot_token
+#                       )
+# updater.bot.setWebhook('https://illness-detector-bot.herokuapp.com/' + telegram_bot_token)
+#
+# updater.idle()
+updater.start_polling()
 
