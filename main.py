@@ -13,8 +13,7 @@ def start(update, context):
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text="Hello, my name is DisDetbot, and I can diagnose "
                                                    "illnesses based on the information provided about symptoms.")
-    context.bot.send_message(chat_id=chat_id, text="In order for me to diagnose your illness,"
-                                                   "I need you to list at least five symptoms.",
+    context.bot.send_message(chat_id=chat_id, text="Please list five symptoms.",
                              reply_markup=symptom_keyboard())
     return FIRST_STEP
 
