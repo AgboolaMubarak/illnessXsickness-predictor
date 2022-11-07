@@ -118,7 +118,7 @@ def SetSymptom5(update, context):
     except Exception:
         context.bot.send_message(update.message.chat.id,
                                  "Some of the symptoms you entered are not decodable by the model;"
-                                 " please check your spelling and try again")
+                                 " please check your spelling and try again ")
     return FIRST_STEP
 
     raise
