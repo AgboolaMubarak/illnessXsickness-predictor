@@ -131,8 +131,6 @@ def cancel(update, context):
         text='invalid values')
     return ConversationHandler.END
 
-    # mess = update.send_message(message.chat.id, "Enter symptom 1")
-    # bot.register_next_step_handler(mess, Set_Symptom)
 
 
 FIRST_STEP, SECOND_STEP, THIRD_STEP, FOURTH_STEP, FIFTH_STEP, SIXTH_STEP = range(6)
