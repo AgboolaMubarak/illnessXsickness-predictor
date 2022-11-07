@@ -1,6 +1,6 @@
 import os
 from telegram.ext import Updater, MessageHandler, Filters, ConversationHandler, CommandHandler
-from telegram import  ReplyKeyboardMarkup, KeyboardButton
+from telegram import ReplyKeyboardMarkup, KeyboardButton
 import random
 from modelling import *
 
@@ -132,7 +132,6 @@ def cancel(update, context):
     return ConversationHandler.END
 
 
-
 FIRST_STEP, SECOND_STEP, THIRD_STEP, FOURTH_STEP, FIFTH_STEP, SIXTH_STEP = range(6)
 
 conv_handler = ConversationHandler(
@@ -158,9 +157,9 @@ conv_handler = ConversationHandler(
 )
 dispatcher.add_handler(conv_handler)
 
-
-updater.start_webhook(listen="0.0.0.0",
-                      port=int(os.environ.get('PORT', 5000)),
-                      url_path=telegram_bot_token,
-                      webhook_url="https://dashboard.heroku.com/apps/illness-detector-bot/" + telegram_bot_token
-                      )
+# updater.start_webhook(listen="0.0.0.0",
+#                       port=int(os.environ.get('PORT', 5000)),
+#                       url_path=telegram_bot_token,
+#                       webhook_url="https://dashboard.heroku.com/apps/illness-detector-bot/" + telegram_bot_token
+#                       )
+updater.start_polling()
