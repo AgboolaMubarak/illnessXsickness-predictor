@@ -1,6 +1,6 @@
 import os
 from telegram.ext import Updater, MessageHandler, Filters, ConversationHandler, CommandHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
+from telegram import  ReplyKeyboardMarkup, KeyboardButton
 import random
 from modelling import *
 
