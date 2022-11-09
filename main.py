@@ -3,10 +3,9 @@ from telegram.ext import Updater, MessageHandler, Filters, ConversationHandler, 
 from telegram import ReplyKeyboardMarkup, KeyboardButton
 import random
 from modelling import *
+import json
 
 telegram_bot_token = "5680510057:AAEpB_SAi6qFXpaW6D88uoIVq_pBoR3quz4"
-
-
 
 
 def start(update, context):
@@ -31,76 +30,119 @@ def GetSymptom(update, context):
 
 def SetSymptom(update, context):
     chat_id = update.effective_chat.id
-    open('trip.txt', 'w').write(update.message.text)
-    with open('trip.txt') as f:
-        txt = f.readlines()
-    if " " in txt[0]:
-        result = re.sub(r"\s+", '_', txt[0])
-        open('problem.txt', 'w').write(result.lower())
+    # with open("trips.json", "w") as outfile:
+    #     diction = {chat_id: update.message.text.lower()}
+    #     json.dump(diction, outfile)
+    diction = {chat_id: update.message.text.lower()}
+    # with open('trip.txt') as f:
+    txt = diction["chat_id"]
+    if " " in txt:
+        result = re.sub(r"\s+", '_', txt)
+        with open("data.json", "w") as outfile:
+            dictionary = {chat_id: result}
+            json.dump(dictionary, outfile)
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 2")
     else:
-        open('problem.txt', 'w').write(update.message.text.lower())
+        with open("data.json", "w") as outfile:
+            dictionary = {chat_id: update.message.text.lower()}
+            json.dump(dictionary, outfile)
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 2")
 
     return THIRD_STEP
 
 
+# function to add to JSON
+def write_json(new_data, filename='data.json'):
+    with open(filename, 'r+') as file:
+        # First we load existing data into a dict.
+        file_data = json.load(file)
+        # Join new_data with file_data inside emp_details
+        file_data["chat_id"].append(new_data)
+        # Sets file's current position at offset.
+        file.seek(0)
+        # convert back to json.
+        json.dump(file_data, file, indent=4)
+
+
 def SetSymptom2(update, context):
     chat_id = update.effective_chat.id
-    open('trip2.txt', 'w').write(update.message.text)
-    with open('trip2.txt') as f:
-        txt = f.readlines()
-    if " " in txt[0]:
-        result = re.sub(r"\s+", '_', txt[0])
-        open('problem1.txt', 'w').write(result.lower())
+    # open('trip2.txt', 'w').write(update.message.text)
+    # with open('trip2.txt') as f:
+    diction = {chat_id: update.message.text.lower()}
+    txt = diction["chat_id"]
+
+    if " " in txt:
+        result = re.sub(r"\s+", '_', txt)
+        # open('problem1.txt', 'w').write(result.lower())
+        new_data = {chat_id: result}
+        write_json(new_data)
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 3")
     else:
-        open('problem1.txt', 'w').write(update.message.text.lower())
+        # open('problem1.txt', 'w').write(update.message.text.lower())
+        new_data = {chat_id: update.message.text.lower()}
+        write_json(new_data)
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 3")
     return FOURTH_STEP
 
 
 def SetSymptom3(update, context):
     chat_id = update.effective_chat.id
-    open('trip3.txt', 'w').write(update.message.text)
-    with open('trip3.txt') as f:
-        txt = f.readlines()
-    if " " in txt[0]:
-        result = re.sub(r"\s+", '_', txt[0])
-        open('problem3.txt', 'w').write(result.lower())
+    # open('trip3.txt', 'w').write(update.message.text)
+    # with open('trip3.txt') as f:
+    #     txt = f.readlines()
+    diction = {chat_id: update.message.text.lower()}
+    txt = diction["chat_id"]
+    if " " in txt:
+        result = re.sub(r"\s+", '_', txt)
+        new_data = {chat_id: result}
+        write_json(new_data)
+        # open('problem3.txt', 'w').write(result.lower())
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 4")
 
     else:
-        open('problem3.txt', 'w').write(update.message.text.lower())
+        new_data = {chat_id: update.message.text.lower()}
+        write_json(new_data)
+        # open('problem3.txt', 'w').write(update.message.text.lower())
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 4")
     return FIFTH_STEP
 
 
 def SetSymptom4(update, context):
     chat_id = update.effective_chat.id
-    open('trip4.txt', 'w').write(update.message.text)
-    with open('trip4.txt') as b:
-        txt = b.readlines()
-    if " " in txt[0]:
-        result = re.sub(r"\s+", '_', txt[0])
-        open('problem4.txt', 'w').write(result.lower())
+
+    diction = {chat_id: update.message.text.lower()}
+    txt = diction["chat_id"]
+        # txt = b.readlines()
+    if " " in txt:
+        result = re.sub(r"\s+", '_', txt)
+        new_data = {chat_id: result}
+        write_json(new_data)
+        # open('problem4.txt', 'w').write(result)
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 5")
     else:
-        open('problem4.txt', 'w').write(update.message.text.lower())
+        new_data = {chat_id: update.message.text.lower()}
+        write_json(new_data)
+        # open('problem4.txt', 'w').write(update.message.text.lower())
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 5")
     return SIXTH_STEP
 
 
 def SetSymptom5(update, context):
     chat_id = update.effective_chat.id
-    open('trip5.txt', 'w').write(update.message.text)
-    with open('trip5.txt') as f:
-        txt = f.readlines()
-    if " " in txt[0]:
-        result = re.sub(r"\s+", '_', txt[0])
-        open('problem5.txt', 'w').write(result.lower())
+    diction = {chat_id: update.message.text.lower()}
+    txt = diction["chat_id"]
+    # open('trip5.txt', 'w').write(update.message.text)
+    # with open('trip5.txt') as f:
+    #     txt = f.readlines()
+    if " " in txt:
+        result = re.sub(r"\s+", '_', txt)
+        new_data = {chat_id: result}
+        write_json(new_data)
+        # open('problem5.txt', 'w').write(result.lower())
     else:
-        open('problem5.txt', 'w').write(update.message.text.lower())
+        new_data = {chat_id: update.message.text.lower()}
+        write_json(new_data)
+        # open('problem5.txt', 'w').write(update.message.text.lower())
 
     try:
 
@@ -153,6 +195,7 @@ conv_handler = ConversationHandler(
     fallbacks=[CommandHandler('cancel', cancel)]
 )
 
+
 def main():
     updater = Updater(token=telegram_bot_token, use_context=True)
     dispatcher = updater.dispatcher
@@ -172,4 +215,3 @@ def main():
 if __name__ == "__main__":
     main()
 # updater.start_polling()
-

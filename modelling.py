@@ -2,16 +2,26 @@ import pickle
 import pandas as pd
 import numpy as np
 import re
+import json
 
 
 model = pickle.load(open('svc.pkl', 'rb'))
 
-arr = []
-txt_file = ["problem.txt", "problem1.txt", "problem3.txt", "problem4.txt", "problem5.txt"]
-for i in list(range(len(txt_file))):
-    with open(txt_file[i]) as f:
-        text = f.read()
-        arr.append(text)
+# arr = []
+# txt_file = ["problem.txt", "problem1.txt", "problem3.txt", "problem4.txt", "problem5.txt"]
+# for i in list(range(len(txt_file))):
+#     with open(txt_file[i]) as f:
+#         text = f.read()
+#         arr.append(text)
+
+
+# Opening JSON file
+with open('data.json', 'r') as openfile:
+    # Reading from json file
+    json_object = json.load(openfile)
+
+arr = list(json_object.values())
+
 
 df1 = pd.read_csv('Symptom-severity.csv')
 
