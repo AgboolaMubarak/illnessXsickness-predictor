@@ -12,7 +12,7 @@ model = pickle.load(open('svc.pkl', 'rb'))
 # for i in list(range(len(txt_file))):
 #     with open(txt_file[i]) as f:
 #         text = f.read()
-#         arr.append(text)
+#         arr.append(
 
 
 # Opening JSON file
