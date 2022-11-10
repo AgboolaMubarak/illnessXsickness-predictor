@@ -54,31 +54,24 @@ def SetSymptom(update, context):
 # function to add to JSON
 def write_json(new_data, chat_id, filename='data.json'):
     with open(filename, 'r+') as file:
-        # First we load existing data into a dict.
         file_data = json.load(file)
-        # Join new_data with file_data inside emp_details
         ben = "symp" + str(chat_id)
         file_data[ben] = new_data
-        # convert back to json.
         json.dump(file_data, file, indent=4)
 
 
 def SetSymptom2(update, context):
     chat_id = update.effective_chat.id
-    # open('trip2.txt', 'w').write(update.message.text)
-    # with open('trip2.txt') as f:
     kit = chat_id + 3
     diction = {kit: update.message.text.lower()}
     txt = diction[kit]
 
     if " " in txt:
         result = re.sub(r"\s+", '_', txt)
-        # open('problem1.txt', 'w').write(result.lower())
         bin = chat_id + 2
         thesymptoms[str(bin)] = result
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 3")
     else:
-        # open('problem1.txt', 'w').write(update.message.text.lower())
         bin = chat_id + 2
         thesymptoms[str(bin)] = update.message.text.lower()
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 3")
@@ -87,9 +80,7 @@ def SetSymptom2(update, context):
 
 def SetSymptom3(update, context):
     chat_id = update.effective_chat.id
-    # open('trip3.txt', 'w').write(update.message.text)
-    # with open('trip3.txt') as f:
-    #     txt = f.readlines()
+
     kit = chat_id + 4
     diction = {kit: update.message.text.lower()}
     txt = diction[kit]
@@ -98,13 +89,11 @@ def SetSymptom3(update, context):
         result = re.sub(r"\s+", '_', txt)
         bin = chat_id + 3
         thesymptoms[str(bin)] = result
-        # open('problem3.txt', 'w').write(result.lower())
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 4")
 
     else:
         bin = chat_id + 3
         thesymptoms[str(bin)] = update.message.text.lower()
-        # open('problem3.txt', 'w').write(update.message.text.lower())
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 4")
     return FIFTH_STEP
 
@@ -115,17 +104,14 @@ def SetSymptom4(update, context):
     kit = chat_id + 5
     diction = {kit: update.message.text.lower()}
     txt = diction[kit]
-    # txt = b.readlines()
     if " " in txt:
         result = re.sub(r"\s+", '_', txt)
         bin = chat_id + 4
         thesymptoms[str(bin)] = result
-        # open('problem4.txt', 'w').write(result)
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 5")
     else:
         bin = chat_id + 4
         thesymptoms[str(bin)] = update.message.text.lower()
-        # open('problem4.txt', 'w').write(update.message.text.lower())
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 5")
     return SIXTH_STEP
 
@@ -135,9 +121,7 @@ def SetSymptom5(update, context):
     kit = chat_id + 6
     diction = {kit: update.message.text.lower()}
     txt = diction[kit]
-    # open('trip5.txt', 'w').write(update.message.text)
-    # with open('trip5.txt') as f:
-    #     txt = f.readlines()
+
     if " " in txt:
         result = re.sub(r"\s+", '_', txt)
         bin = chat_id + 5
