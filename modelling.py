@@ -4,7 +4,6 @@ import numpy as np
 import re
 import json
 
-
 model = pickle.load(open('svc.pkl', 'rb'))
 
 # arr = []
@@ -15,18 +14,15 @@ model = pickle.load(open('svc.pkl', 'rb'))
 #         arr.append(
 
 
-# Opening JSON file
-with open('data.json', 'r') as openfile:
-    # Reading from json file
-    json_object = json.load(openfile)
-
-arr = list(json_object.values())
-
-
 df1 = pd.read_csv('Symptom-severity.csv')
 
 
+
 def SVM():
+    with open('data.json', 'r') as openfile:
+        json_object = json.load(openfile)
+    arr = list(json_object.values())
+
     a = np.array(df1["Symptom"])
     b = np.array(df1["weight"])
     for j in range(len(arr)):
