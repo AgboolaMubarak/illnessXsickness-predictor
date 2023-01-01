@@ -34,3 +34,4 @@ def SVM():
     val = str(pred)
     res = re.sub(r'[^\w\s]', '', val)
     return res
+
