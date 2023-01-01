@@ -17,7 +17,6 @@ model = pickle.load(open('svc.pkl', 'rb'))
 df1 = pd.read_csv('Symptom-severity.csv')
 
 
-
 def SVM():
     with open('data.json', 'r') as openfile:
         json_object = json.load(openfile)
