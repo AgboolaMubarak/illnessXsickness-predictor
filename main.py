@@ -7,7 +7,7 @@ import json
 
 telegram_bot_token = "5680510057:AAEpB_SAi6qFXpaW6D88uoIVq_pBoR3quz4"
 
-thesymptoms = {}
+thesymptoms ={}
 
 
 def start(update, context):
