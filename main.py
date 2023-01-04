@@ -14,7 +14,7 @@ def start(update, context):
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text="Hello, my name is DisDetbot, and I can diagnose "
                                                    "illnesses based on the information provided about symptoms.")
-    context.bot.send_message(chat_id=chat_id, text="Please list five symptoms.",
+    context.bot.send_message(chat_id=chat_id, text="click button below keyboard to enter symptoms",
                              reply_markup=symptom_keyboard())
     return FIRST_STEP
 
@@ -186,6 +186,8 @@ conv_handler = ConversationHandler(
 
     fallbacks=[CommandHandler('cancel', cancel)]
 )
+
+
 
 
 def main():
