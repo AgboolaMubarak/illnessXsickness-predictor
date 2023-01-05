@@ -199,9 +199,9 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=int(os.environ.get('PORT', 5000)),
                           url_path=telegram_bot_token,
-                          webhook_url="https://illness-detector-bot.herokuapp.com/" + telegram_bot_token
+                          webhook_url="https://illness-detector.onrender.com/" + telegram_bot_token
                           )
-    updater.bot.setWebhook('https://illness-detector-bot.herokuapp.com/' + telegram_bot_token)
+    updater.bot.setWebhook('https://illness-detector.onrender.com' + telegram_bot_token)
 
     updater.idle()
 
