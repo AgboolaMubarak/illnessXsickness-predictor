@@ -215,5 +215,4 @@ if __name__ == "__main__":
 #     updater.idle()
 #
 #
-# if __name__ == "__main__":
-#     main()
+
