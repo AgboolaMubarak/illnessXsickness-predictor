@@ -5,15 +5,14 @@ import random
 from modelling import *
 import json
 
-telegram_bot_token = "5680510057:AAFlssWUdFYigkR0NU58xh1YFJLIEVQ9_0c"
+telegram_bot_token = "5633697553:AAFObOqTeNesPC4A5m04tbIld7Gpj26_N1k"
 
 thesymptoms = {}
 
 
 def start(update, context):
     chat_id = update.effective_chat.id
-    context.bot.send_message(chat_id=chat_id, text="Hello, my name is DisDetbot, and I can diagnose "
-                                                   "illnesses based on the information provided about symptoms.")
+    context.bot.send_message(chat_id=chat_id, text="I'm DisDetbot and I diagnose illnesses based on provided symptoms.")
     context.bot.send_message(chat_id=chat_id, text="click button below keyboard to enter symptoms",
                              reply_markup=symptom_keyboard())
     return FIRST_STEP
@@ -71,10 +70,12 @@ def SetSymptom2(update, context):
         bin = chat_id + 2
         thesymptoms[str(bin)] = result
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 3")
+
     else:
         bin = chat_id + 2
         thesymptoms[str(bin)] = update.message.text.lower()
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 3")
+
     return FOURTH_STEP
 
 
@@ -95,6 +96,7 @@ def SetSymptom3(update, context):
         bin = chat_id + 3
         thesymptoms[str(bin)] = update.message.text.lower()
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 4")
+
     return FIFTH_STEP
 
 
@@ -109,10 +111,12 @@ def SetSymptom4(update, context):
         bin = chat_id + 4
         thesymptoms[str(bin)] = result
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 5")
+
     else:
         bin = chat_id + 4
         thesymptoms[str(bin)] = update.message.text.lower()
         context.bot.send_message(chat_id=chat_id, text="Enter symptom 5")
+
     return SIXTH_STEP
 
 
@@ -196,23 +200,21 @@ def main():
     updater.start_polling()
 
 
+def main():
+    updater = Updater(token=telegram_bot_token, use_context=True)
+    dispatcher = updater.dispatcher
+
+    dispatcher.add_handler(conv_handler)
+
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(os.environ.get('PORT', 5000)),
+                          url_path=telegram_bot_token,
+                          webhook_url="https://illness-detector.onrender.com/" + telegram_bot_token
+                          )
+    updater.bot.setWebhook('https://illness-detector.onrender.com/' + telegram_bot_token)
+
+    updater.idle()
+
+
 if __name__ == "__main__":
     main()
-
-# def main():
-#     updater = Updater(token=telegram_bot_token, use_context=True)
-#     dispatcher = updater.dispatcher
-#
-#     dispatcher.add_handler(conv_handler)
-#
-#     updater.start_webhook(listen="0.0.0.0",
-#                           port=int(os.environ.get('PORT', 5000)),
-#                           url_path=telegram_bot_token,
-#                           webhook_url="https://illness-detector-bot.herokuapp.com/" + telegram_bot_token
-#                           )
-#     updater.bot.setWebhook('https://illness-detector-bot.herokuapp.com/' + telegram_bot_token)
-#
-#     updater.idle()
-#
-#
-
