@@ -133,7 +133,6 @@ def SetSymptom5(update, context):
         thesymptoms[str(bin)] = result
         with open("data.json", "w") as outfile:
             json.dump(thesymptoms, outfile)
-        # open('problem5.txt', 'w').write(result.lower())
     else:
         bin = chat_id + 5
         thesymptoms[str(bin)] = update.message.text.lower()
