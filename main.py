@@ -5,7 +5,7 @@ import random
 from modelling import *
 import json
 
-telegram_bot_token = "5633697553:AAFObOqTeNesPC4A5m04tbIld7Gpj26_N1k"
+telegram_bot_token = "5598477130:AAFb1zALV4vYlSJ4AoBUzAKhE3xcHlh77Cs"
 
 thesymptoms = {}
 
