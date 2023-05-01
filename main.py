@@ -212,7 +212,7 @@ def main():
                           )
     updater.bot.setWebhook('https://illness-detector.onrender.com/' + telegram_bot_token)
 
-    updater.idle()
+    updater.start_polling()
 
 if __name__ == "__main__":
     main()
