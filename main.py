@@ -33,8 +33,6 @@ def GetSymptom(update, context):
 def SetSymptom(update, context):
     chat_id = update.effective_chat.id
     # with open("trips.json", "w") as outfile:
-    #     diction = {chat_id: update.message.text.lower()}
-    #     json.dump(diction, outfile)
     diction = {chat_id: update.message.text.lower()}
     # with open('trip.txt') as f:
     txt = diction[chat_id]
@@ -193,28 +191,28 @@ conv_handler = ConversationHandler(
 )
 
 
-def main():
-    updater = Updater(token=telegram_bot_token, use_context=True)
-    dispatcher = updater.dispatcher
-
-    dispatcher.add_handler(conv_handler)
-    updater.start_polling()
-
-
 # def main():
 #     updater = Updater(token=telegram_bot_token, use_context=True)
 #     dispatcher = updater.dispatcher
 #
 #     dispatcher.add_handler(conv_handler)
-#
-#     updater.start_webhook(listen="0.0.0.0",
-#                           port=int(os.environ.get('PORT', 5000)),
-#                           url_path=telegram_bot_token,
-#                           webhook_url="https://illness-detector.onrender.com/" + telegram_bot_token
-#                           )
-#     updater.bot.setWebhook('https://illness-detector.onrender.com/' + telegram_bot_token)
-#
-#     updater.idle()
+#     updater.start_polling()
+
+
+def main():
+    updater = Updater(token=telegram_bot_token, use_context=True)
+    dispatcher = updater.dispatcher
+
+    dispatcher.add_handler(conv_handler)
+
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(os.environ.get('PORT', 5000)),
+                          url_path=telegram_bot_token,
+                          webhook_url="https://illness-detector.onrender.com/" + telegram_bot_token
+                          )
+    updater.bot.setWebhook('https://illness-detector.onrender.com/' + telegram_bot_token)
+
+    updater.idle()
 
 if __name__ == "__main__":
     main()
