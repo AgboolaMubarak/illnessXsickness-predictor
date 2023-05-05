@@ -4,6 +4,7 @@ from telegram import ReplyKeyboardMarkup, KeyboardButton
 import random
 from modelling import *
 import json
+import webbrowser
 
 telegram_bot_token = "6070592587:AAEc6jU98q3vZ3h4SfxwoFrjZXUtnT9u72U"
 
@@ -143,10 +144,11 @@ def SetSymptom5(update, context):
         rep = SVM()
         context.bot.send_message(update.message.chat.id,
                                  "Based on your symptom profile, " + rep + "  is a strong possibility")
-        val = random.randint(7, 9)
         context.bot.send_message(update.message.chat.id,
-                                 "An appointment has been booked at the Unilag Health Center for you tommorow at "
-                                 + str(val) + "am")
+                                 "Hold on, you are being redirected to a hospital website")
+        url = "https://www.lasuth.org.ng/contact.html"
+        webbrowser.open(url)
+
         return SIXTH_STEP
 
 
